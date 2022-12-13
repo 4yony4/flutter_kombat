@@ -9,6 +9,7 @@ class Player extends PositionComponent {
   @override
   void render(Canvas canvas) {
     _paint.color = Colors.white;
+
     canvas.drawRect(size.toRect(), _paint);
     //canvas.drawImage(image, offset, paint)
 
