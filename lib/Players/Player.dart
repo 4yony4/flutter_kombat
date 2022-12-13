@@ -9,13 +9,29 @@ class Player extends PositionComponent with Tappable{
   Color cVisible=Colors.white;
   double iYMovido=0;
   double iYOrigen=0;
+  int tapCount=0;
+  int iLevel=1;
+  int iDireccion=-2;
+  int iAlturaMaxima=800;
+  double dGravedad=9.8;
+
   //UNO
   @override
   void update(double dt) {
     // TODO: implement update
     super.update(dt);
     _paint.color = cVisible;
-    position[1]=iYOrigen+iYMovido;
+    position[1]=position[1]+iDireccion;
+
+    if(position[1]<0){
+      iDireccion=-iDireccion;
+    }
+    if(position[1]>iAlturaMaxima){
+      iDireccion=-iDireccion;
+    }
+
+
+    //position[1]=iYOrigen+iYMovido;
   }
 
   @override
@@ -44,7 +60,13 @@ class Player extends PositionComponent with Tappable{
   bool onTapDown(TapDownInfo info) {
     // TODO: implement onTapDown
     cVisible = Colors.red;
-    iYMovido=iYMovido+10;
+    iDireccion=-iDireccion;
+    /*tapCount++;
+    if(tapCount>iLevel*5){
+      iDireccion=iDireccion*2;
+      tapCount=0;
+    }*/
+    //iYMovido=iYMovido+10;
     return super.onTapDown(info);
   }
 
