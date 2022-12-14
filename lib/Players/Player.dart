@@ -1,8 +1,10 @@
 import 'dart:ui';
 
+import 'package:flame/cache.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flutter/material.dart';
+
 
 class Player extends PositionComponent with Tappable{
   static final _paint = Paint();
@@ -14,6 +16,26 @@ class Player extends PositionComponent with Tappable{
   int iDireccion=-2;
   int iAlturaMaxima=800;
   double dGravedad=9.8;
+  late Rect rectObjecto;
+  late dynamic imgNave;
+  final imagesLoader = Images();
+  late Offset imgOffset;
+  late Sprite spriteNave;
+
+  @override
+  Future<void>? onLoad() async {
+    // TODO: implement onLoad
+    iYOrigen=position[1];
+    rectObjecto=size.toRect();
+
+    imgNave = (await imagesLoader.load('naves/nave1.jpg'));
+    imgOffset = const Offset( 0,0);
+    spriteNave = Sprite(imgNave,srcSize: size);
+    //add(spriteNave);
+    //imgNave=Image.asset("assets/icon/icon.png");
+    return super.onLoad();
+
+  }
 
   //UNO
   @override
@@ -34,18 +56,13 @@ class Player extends PositionComponent with Tappable{
     //position[1]=iYOrigen+iYMovido;
   }
 
-  @override
-  Future<void>? onLoad() {
-    // TODO: implement onLoad
-    iYOrigen=position[1];
-    return super.onLoad();
-
-  }
-
   //DOS
   @override
   void render(Canvas canvas) {
-    canvas.drawRect(size.toRect(), _paint);
+    //canvas.drawRect(rectObjecto, _paint);
+
+    //canvas.drawImage(imgNave,imgOffset, _paint);
+    spriteNave.render(canvas,size: Vector2(400.0, y=400.0));
     //canvas.drawImage(image, offset, paint)
   }
 
