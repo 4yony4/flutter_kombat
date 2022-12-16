@@ -6,7 +6,7 @@ import 'package:flame/events.dart';
 import 'package:flutter/material.dart';
 
 
-class Player extends PositionComponent with Tappable{
+class Player extends SpriteComponent with Tappable{
   static final _paint = Paint();
   Color cVisible=Colors.white;
   double iYMovido=0;
@@ -20,7 +20,9 @@ class Player extends PositionComponent with Tappable{
   late dynamic imgNave;
   final imagesLoader = Images();
   late Offset imgOffset;
-  late Sprite spriteNave;
+  SpriteAnimation a;
+
+  //late Sprite spriteNave;
 
   @override
   Future<void>? onLoad() async {
@@ -30,7 +32,10 @@ class Player extends PositionComponent with Tappable{
 
     imgNave = (await imagesLoader.load('naves/nave1.jpg'));
     imgOffset = const Offset( 0,0);
-    spriteNave = Sprite(imgNave,srcSize: size);
+    sprite = Sprite(imgNave);
+
+    //spriteNave = Sprite(imgNave,srcSize: size);
+    //sprite = (await imagesLoader.load('naves/nave1.jpg'));
     //add(spriteNave);
     //imgNave=Image.asset("assets/icon/icon.png");
     return super.onLoad();
@@ -59,10 +64,15 @@ class Player extends PositionComponent with Tappable{
   //DOS
   @override
   void render(Canvas canvas) {
+    a.re
+    //sprite?.renderRect(canvas, rectObjecto);
+    //sprite.render(canvas, 16.0, 16.0);
     //canvas.drawRect(rectObjecto, _paint);
+    //super.render(canvas);
+
 
     //canvas.drawImage(imgNave,imgOffset, _paint);
-    spriteNave.render(canvas,size: Vector2(400.0, y=400.0));
+    //spriteNave.render(canvas,size: Vector2(400.0, y=400.0));
     //canvas.drawImage(image, offset, paint)
   }
 
