@@ -20,7 +20,7 @@ class Player extends SpriteComponent with Tappable{
   late dynamic imgNave;
   final imagesLoader = Images();
   late Offset imgOffset;
-  SpriteAnimation a;
+  //SpriteAnimation a;
 
   //late Sprite spriteNave;
 
@@ -64,7 +64,7 @@ class Player extends SpriteComponent with Tappable{
   //DOS
   @override
   void render(Canvas canvas) {
-    a.re
+    //a.re
     //sprite?.renderRect(canvas, rectObjecto);
     //sprite.render(canvas, 16.0, 16.0);
     //canvas.drawRect(rectObjecto, _paint);
