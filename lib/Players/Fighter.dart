@@ -1,11 +1,14 @@
 
 
+import 'package:flame/components.dart';
 import 'package:flame_forge2d/body_component.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:flutterkombat/Scenes/KombatGame.dart';
 import 'package:forge2d/src/dynamics/body.dart';
 
-class Fighter extends BodyComponent<KombatGame>{
+class Fighter extends BodyComponent<KombatGame> with KeyboardHandler{
 
   final Vector2 position;
   final Vector2 size;
@@ -46,6 +49,10 @@ class Fighter extends BodyComponent<KombatGame>{
     return world.createBody(def)..createFixture(fixtureDef);
   }
 
+  @override
+  bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+
+  }
 
 
 }
