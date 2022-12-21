@@ -51,6 +51,40 @@ class Fighter extends BodyComponent<KombatGame> with KeyboardHandler{
 
   @override
   bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+    //print("DEBUG:------>>>>> "+keysPressed.toString());
+
+
+    //final isKeyDown = event is RawKeyDownEvent;
+    //final isKeyUp = event is RawKeyUpEvent;
+
+    if(keysPressed.contains(LogicalKeyboardKey.arrowRight)){
+      //center.add(Vector2(3, 0));
+      body.setTransform(body.position+Vector2(3, 0), 0);
+      return true;
+    }
+    else if(keysPressed.contains(LogicalKeyboardKey.arrowLeft)){
+      center.add(Vector2(-3, 0));
+      return true;
+    }
+    else if(keysPressed.contains(LogicalKeyboardKey.arrowUp)){
+      center.add(Vector2(0, -3));
+      return true;
+    }
+    else if(keysPressed.contains(LogicalKeyboardKey.arrowDown)){
+      center.add(Vector2(0, 3));
+      return true;
+    }
+    else{
+      return false;
+    }
+
+    return false;
+  }
+
+  @override
+  void update(double dt) {
+    // TODO: implement update
+    super.update(dt);
 
   }
 

@@ -2,6 +2,7 @@
 
 import 'dart:ui';
 
+import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:flame_forge2d/forge2d_game.dart';
@@ -9,7 +10,7 @@ import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutterkombat/Objects/TiledMapObjectBody.dart';
 import 'package:flutterkombat/Players/Fighter.dart';
 
-class KombatGame extends Forge2DGame{
+class KombatGame extends Forge2DGame with HasKeyboardHandlerComponents{
 
   late TiledComponent mapComponent;
 
